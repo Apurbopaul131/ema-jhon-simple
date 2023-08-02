@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Poppins:wght@500&family=Roboto:wght@500&display=swap');
+
+.order-info {
+    font-family: 'Lato', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    
+}
+
+.order-info h4 {
+    font-size: 25px;
+    color: #1C2B35;
+    text-align: center;
+}
+.order-info .side-info{
+    margin-left: 20px;
+}
+
+.order-info p {
+    font-size: 17px;
+    letter-spacing: 0.085px;
+    color: #2A414F;
+}
+
+.order-info h6 {
+    font-size: 21px;
+    letter-spacing: 0.032px;
+    color: #0E161A;
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+.button-container .clear-cart {
+    width: 96%;
+    height: 48px;
+    background-color: #FF3030;
+    border-radius: 4px;
+    color: white;
+    
+}
+.button-container .review-cart {
+    width: 96%;
+    height: 48px;
+    background-color: #F90;
+    border-radius: 4px;
+    color: white;
+    margin-top: 10px;
+
+}

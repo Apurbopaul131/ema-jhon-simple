@@ -2,6 +2,8 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import "./Product.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
 const Product = (props) => {
     const {
@@ -11,6 +13,8 @@ const Product = (props) => {
         img,
         ratings
     } = props.product;
+    const addTocart = props.addTocart;
+    
     
     return (
         <div className='product'>
@@ -23,7 +27,9 @@ const Product = (props) => {
                     <p>Manufacturer:{seller}</p>
                     <p>Rating:{ratings}star</p>
             </div>
-            <button className="btn">Add to cart</button>
+            <button className="btn" onClick={()=>addTocart(props.product)}>Add to cart
+            <FontAwesomeIcon style={{marginLeft:"5px"}} icon={faShoppingCart} />
+            </button>
         </div>
     );
 };
