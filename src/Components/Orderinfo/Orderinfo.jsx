@@ -4,15 +4,17 @@ import React from 'react';
 import "./Orderinfo.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowCircleRight, faTrash } from '@fortawesome/free-solid-svg-icons'
+import Product from '../Product/Product';
 const Orderinfo = ({ cart }) => {
-    console.log(cart);
     let totalPrice = 0;
     let totalShipping = 0;
+    let quantity = 0;
     //using objece destruce take two property from cart componnet props
     //callculate total,grandTotal,tax and shipping
     cart.forEach((product) => {
-        totalPrice += product.price;
-        totalShipping += product.shipping;
+        quantity = quantity + product.quantity;
+        totalPrice = totalPrice + (product.price * product.quantity);
+        totalShipping += product.shipping * product.quantity;
     });
     const tax = totalPrice * 0.07;
     const grandTotal = totalPrice + totalShipping + tax;
@@ -20,7 +22,7 @@ const Orderinfo = ({ cart }) => {
         <div className='order-info'>
             <h4>Order Summery</h4>
             <div className="side-info">
-                <p>Selacted Itmes:{cart.length}</p>
+                <p>Selacted Itmes:{quantity}</p>
                 <p>Total Price:${totalPrice.toFixed(2)}</p>
                 <p>Total Shipping Charge:${totalShipping}</p>
                 <p>Tax:${tax.toFixed(2)}</p>

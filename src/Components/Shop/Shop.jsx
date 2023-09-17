@@ -38,15 +38,23 @@ const Shop = () => {
         setCart(savedCart);
         
     },[products])
-    const callculateOrderSummery = (orderData) =>{
-        console.log(orderData);
-    }
     const addTocart = (cardData) =>{
-        const newCart = [...cart,cardData];
-        setCart(newCart);
+        const exist = cart.find((product)=>product.id === cardData.id);
+        if(!exist){
+            cardData.quantity = 1;
+            const newCart = [...cart,cardData];
+            setCart(newCart);
+        }
+        else{
+            exist.quantity = exist.quantity + 1;
+            const remaining = cart.filter((pd)=>pd.id !== exist.id);
+            const newCart = [...remaining,exist];
+            setCart(newCart);
+        }
         addToLocalStorage(cardData.id);
         
     }
+    console.log(cart);
     return (
         <div className='shop-container'>
             <div className='product-container'>
@@ -62,3 +70,4 @@ const Shop = () => {
 };
 
 export default Shop;
+
