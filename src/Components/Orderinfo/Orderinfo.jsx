@@ -5,7 +5,7 @@ import "./Orderinfo.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowCircleRight, faTrash } from '@fortawesome/free-solid-svg-icons'
 import Product from '../Product/Product';
-const Orderinfo = ({ cart }) => {
+const Orderinfo = ({ cart,handleClearCart,isShop }) => {
     let totalPrice = 0;
     let totalShipping = 0;
     let quantity = 0;
@@ -29,12 +29,13 @@ const Orderinfo = ({ cart }) => {
                 <h6>Grand Total:${grandTotal.toFixed(2)}</h6>
             </div>
             <div className="button-container">
-                <button className="clear-cart">Clear cart
+                <button className="clear-cart" onClick={handleClearCart}>Clear cart
                     <FontAwesomeIcon style={{ marginLeft: "5px" }} icon={faTrash} />
                 </button>
             </div>
             <div className="button-container">
-                <button className="review-cart">Review Cart
+                <button className="review-cart">
+                    {isShop ? 'Review Cart' : 'Proceed Checkout'}
                     <FontAwesomeIcon style={{ marginLeft: "5px" }} icon={faArrowCircleRight} />
                 </button>
             </div>

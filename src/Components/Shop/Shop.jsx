@@ -5,6 +5,7 @@ import Product from '../Product/Product';
 import Orderinfo from '../Orderinfo/Orderinfo';
 import { faBookOpenReader } from '@fortawesome/free-solid-svg-icons';
 import { addToLocalStorage, getShoppingCart } from '../Utilities/fakeDB';
+import { deleteShoppingCart } from '../../utilities/fakedb';
 
 const Shop = () => {
     const [products,setProducts] = useState([]);
@@ -54,7 +55,11 @@ const Shop = () => {
         addToLocalStorage(cardData.id);
         
     }
-    console.log(cart);
+    // This function used for cler total cart in order summery
+    const handleClearCart = () =>{
+        deleteShoppingCart();
+        setCart([]);
+    }
     return (
         <div className='shop-container'>
             <div className='product-container'>
@@ -63,7 +68,12 @@ const Shop = () => {
                 }
             </div>
             <div className='product-summary'>
-                <Orderinfo cart={cart}></Orderinfo>
+                <Orderinfo 
+                cart={cart}
+                handleClearCart={handleClearCart}
+                isShop={true}
+                >
+                </Orderinfo>
             </div>
         </div>
     );
